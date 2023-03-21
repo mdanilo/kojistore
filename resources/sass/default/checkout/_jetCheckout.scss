@@ -1,0 +1,330 @@
+@media screen and (max-width: $mobile-bp) {
+    .logo {
+        display: block !important;
+        margin: 0 auto;
+    }
+}
+.input-datepicker .agendar{
+    width: 165px;
+    font-size: 13px;
+
+    &.date{
+        width: 95px !important;
+        padding: .7em;
+    }
+}
+
+.containerCheckout {
+    h1 {
+        margin: 0 auto;
+        font-size: 24px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .ui.table thead th {
+        border-bottom: none!important;
+    }
+
+    input#shipping {
+        height: 50px;
+        border-radius: 0;
+        margin-right: 10px;
+        border: 1px solid black!important;
+    }
+
+    button#CallServiceShipping {
+        width: 115px;
+        font-weight: 900;
+        border-radius: 0;
+        border: 1px solid black;
+        padding: 0 2rem!important;
+        background-color: transparent;
+    }
+
+    #finalizePurchase {
+        height: 60px;
+        text-align: left;
+        border-radius: 0;
+        text-transform: uppercase;
+        background-position: 95%;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='17' viewBox='0 0 16 17' fill='none'%3E%3Cpath d='M8.00039 15.725L7.27539 15.025L13.3004 9.00003H0.775391V8.00003H13.3004L7.27539 1.97502L8.00039 1.27502L15.2254 8.50003L8.00039 15.725Z' fill='white' stroke='white'/%3E%3C/svg%3E");
+    }
+}
+
+.jetBg {
+    background: #fcf6f6 !important;
+
+    .ui.segment {
+        box-shadow: none;
+    }
+}
+
+.whiteBg {
+    background: white;
+}
+
+
+.jet.checkout {
+    .success {
+        .icon {
+            color: $primary-color;
+        }
+    }
+
+    &.jBreadCrumb {
+        @extend .flexCenter;
+        @media screen and (max-width: $mobile-bp) {
+            display: none;
+        }
+        .jCrumb {
+            @extend .flexCenter;
+            flex-wrap: wrap;
+            margin: 0 10px;
+            z-index: 2;
+            .jBullet {
+                @extend .flexCenter;
+                width: 71px;
+                height: 71px;
+                color: #000;
+                border-radius: 50%;
+                background-color: transparent;
+                @media screen and (max-width: $mobile-bp) {
+                    height: 35px;
+                    width: 35px;
+                }
+            }
+            .jButton {
+                background-color: #fcf6f6;
+                border: 1px solid #000;
+                border-radius: 50%;
+                height: 71px;
+                line-height: 71px;
+                text-align: center;
+                width: 71px;
+                @media screen and (max-width: $mobile-bp) {
+                    height: 30px;
+                    width: 30px;
+                }
+                span {
+                    font-size: 20px;
+                    line-height: 34px;
+                    @media screen and (max-width: $mobile-bp) {
+                        font-size: 15px;
+                        line-height: 28px;
+                    }
+                }
+            }
+            h4 {
+                clear: both;
+                flex: none;
+                width: 100%;
+                color:#000;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 10px;
+                @media screen and (max-width: $mobile-bp) {
+                    display: none;
+                }
+            }
+
+            &.active {
+                .jButton {
+                    color: #fff;
+                    background-color: #000;
+                }
+                h4 {
+                    font-weight: 900;
+                }
+            }
+
+            &.completed {
+                .jButton {
+                    background: $secondary-color;
+                    span {
+                        color: white;
+                        i {
+                            margin-left: 4px;
+                        }
+                    }
+                }
+                h4 {
+                    color: $secondary-color;
+                }
+            }
+
+        }
+
+        &:after {
+            content: "";
+            width: 65%;
+            top: 33px;
+            z-index: 1;
+            position: absolute;
+            border-bottom: 1px solid #E9E9E9;
+            @media screen and (max-width: $mobile-bp) {
+                content: "";
+                width: 30%;
+                position: absolute;
+                top: 17px;
+                z-index: 1;
+            }
+        }
+    }
+
+    input:not([type]),
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="text"],
+    input[type="file"],
+    input[type="url"] {
+        border: 0px;
+        border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+        border-radius: 0px !important;
+        &.fluid {
+            min-width: 60%;
+            width: 100%;
+        }
+    }
+}
+
+.presente {
+    #checkPresente {
+        margin-top:10px;
+    }
+}
+
+
+.ui.toggle.checkbox input:checked ~ .box:before,
+.ui.toggle.checkbox input:checked ~ label:before {
+    background-color: $secondary-color !important;
+}
+
+#jetCheckout-Logo {
+    #logo {
+        fill: #00B04C;
+    }
+
+    #lock {
+        fill: #010101;
+    }
+
+    #texto {
+        fill: #010101;
+    }
+}
+
+.ui.form .two.fields > .fields, .ui.form .two.fields > .field.hidden {
+    display: none;
+}
+
+.success-debit-pagseguro {
+    background-color: white;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.success-debit-pagseguro h3 {
+    text-align: center;
+}
+
+.container-card {
+    .tabular {
+        &.menu {
+            >.item {
+                font-weight: normal;
+                letter-spacing: .2px;
+                text-transform: none;
+                font-size: 15px;
+                &.active {
+                    font-weight: 500;
+                    background-color: $bgBox !important;
+                }
+            }
+        }
+    }
+}
+
+
+.checkSuccess {
+    @media screen and (max-width: $mobile-bp) {
+        text-align: center !important;
+    }
+    .row {
+        .column {
+            th,
+            td {
+                @media screen and (max-width: $mobile-bp) {
+                    text-align: center !important;
+                }
+            }
+            + .column {
+                text-align: right;
+                @media screen and (max-width: $mobile-bp) {
+                    text-align: center !important;
+                }
+            }
+        }
+    }
+}
+
+.bg-register {
+    @media screen and (max-width: $mobile-bp) {
+        text-align: center !important;
+    }
+}
+.recurring-frequency {
+    &-box {
+        display: flex;
+        align-items: center;
+    }
+
+    &-title {
+        font-weight: 600;
+        margin-right: 4px;
+    }
+}
+
+.ui.form {
+    .field.hidden {
+        display: none;
+    }
+
+    .tree.fields {
+
+        > .field {
+            width: 33%;
+        }
+    }
+}
+
+.userDifferent {
+    margin: 1rem 0
+}
+
+.divQrCode {
+    width: 70%;
+    height: 36px;
+    overflow: hidden;
+    line-height: 36px;
+    display: inline-block;
+    border: 1px solid #bcbdbd;
+    border-radius: 5px 0 0 5px;
+    background-color: #F8F8F7;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#CopyQrCode {
+    vertical-align: top;
+    border-radius: 0 5px 5px 0;
+    margin: 0 0 0 -4px;
+}

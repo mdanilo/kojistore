@@ -1,0 +1,89 @@
+﻿@model DomainProduct.Filters
+<div class="ui mobile only" id="filter-mobile">
+    <ul class="display flex align-items center justify content between">
+        <li>
+            <span class="display flex align-items center" id="filtrar-mobile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><mask id="mask0_124_1451" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="21" height="21"><rect width="21" height="21" fill="#D9D9D9"/></mask><g mask="url(#mask0_124_1451)"><path d="M9.1875 15.3125V14.4375H11.8125V15.3125H9.1875ZM5.6875 10.6094V9.7344H15.3125V10.6094H5.6875ZM3.0625 5.8844V5.0094H17.9375V5.8844H3.0625Z" fill="#1C1B1F"/></g></svg>
+                <strong>Filtrar</strong>
+            </span>
+        </li>
+
+        <li>
+            <span class="display flex align-items center" id="ordenar-mobile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><mask id="mask0_124_1451" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="21" height="21"><rect width="21" height="21" fill="#D9D9D9"/></mask><g mask="url(#mask0_124_1451)"><path d="M9.1875 15.3125V14.4375H11.8125V15.3125H9.1875ZM5.6875 10.6094V9.7344H15.3125V10"></path><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><mask id="mask0_124_1447" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="21" height="21"><rect width="21" height="21" fill="#D9D9D9"/></mask><g mask="url(#mask0_124_1447)"><path d="M16.8883 14L16.2758 14.6125L13.5633 11.9219L13.5633 18.8125L12.6883 18.8125L12.6883 11.9219L9.97578 14.6125L9.36328 14L13.1258 10.2375L16.8883 14ZM11.6383 7L7.87578 10.7625L4.11328 7L4.72578 6.3875L7.43828 9.07812L7.43828 2.1875L8.31328 2.1875L8.31328 9.07812L11.0258 6.3875L11.6383 7Z" fill="#1C1B1F"/></g></svg>6094H5.6875ZM3.0625 5.8844V5.0094H17.9375V5.8844H3.0625Z" fill="#1C1B1F"/></g></svg>
+                <strong>Ordenar</strong>
+            </span>
+        </li>
+        
+        <li>
+            <div class="display flex align-items center justify content center" id="grid-mobile">
+                <span class="margin right small"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><rect width="21" height="21" rx="2" fill="#D9D9D9"/></svg></span>
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><rect width="21" height="21" rx="2" fill="#D9D9D"></rect><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><rect width="9" height="21" rx="2" fill="#D9D9D9"/><rect x="12" width="9" height="21" rx="2" fill="#D9D9D9"/></svg>9"/></svg></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="column" id="filter">
+    <div class="ui labels containerFilter">
+
+    </div>
+    <div class="four wide column filtros" id="filtros">
+        <div class="ui grid one column">
+            <div class="row">
+                <div class="row filterbar">
+                    <div class="eight wide column">
+                        <h3>Filtros</h3>
+                    </div>
+                    <div class="eight wide column">
+                        <a class="ui button icon closeFiltros"><i class="remove icon"></i></a>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui accordion" id="filtroList">
+                        @if (Model.Categories != null && Model.Categories.Count() > 1)
+                        {
+                            <!-- Page: ~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml --> 
+                            @Html.Partial("~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml", Model.Categories)
+                        }
+
+                        @if (Model.GroupingTypes != null && Model.GroupingTypes.Count() > 0)
+                        { 
+                            <!-- Page: ~/Views/Shared/Blocks/Product/_GroupingTypesFilters.cshtml -->
+                            @Html.Partial("~/Views/Shared/Blocks/Product/_GroupingTypesFilters.cshtml", Model.GroupingTypes)
+                        }
+
+                        @if (Model.References != null && Model.References.Count() > 0)
+                        {
+                            <!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
+                            @Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
+                        }
+
+                        @if (Model.Brands != null && Model.Brands.Count() > 1)
+                        {
+                            <!-- Page: ~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml -->
+                            @Html.Partial("~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml", Model.Brands)
+                        }
+
+                        @if (Model.Attributes != null && Model.Attributes.Count() > 0)
+                        {
+                            <!-- Page: ~/Views/Shared/Blocks/Atribute/_AtributesFilters.cshtml -->
+                            @Html.Partial("~/Views/Shared/Blocks/Atributes/_AtributesFilters.cshtml", Model.Attributes)
+                        }
+
+                        @* @Html.Partial("~/Views/Shared/Blocks/Product/_PriceFilters.cshtml") *@
+                    </div>
+
+                    <div class="ui mobile only filterButton">
+                        <div class="display flex align-items center justify content between">
+                            <span class="aplicar-filtro-mobile">Cancelar</span>
+                            <span class="aplicar-filtro-mobile apply">Aplicar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- Page: ~/Views/Shared/Blocks/Group/_GroupList.cshtml -->
+                @* @Html.Action("groupList", "group") *@
+        </div>
+
+    </div>
+</div>

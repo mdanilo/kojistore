@@ -1,0 +1,41 @@
+.custom-pages { 
+    .content {
+        h1 {
+            font-size: 32px;
+            font-weight: 400;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+        }
+
+        .column {
+            p {
+                font-size: 16px;
+                font-weight: 300;
+                font-style: normal;
+                letter-spacing: 0.04em;
+                text-transform: capitalize;
+            }
+        }
+
+        .midias {
+            padding: 1rem;
+            min-width: 235px;
+            display: inline-block;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+
+            ul {
+                padding: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .banner {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

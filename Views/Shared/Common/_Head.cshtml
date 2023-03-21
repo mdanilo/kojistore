@@ -1,0 +1,73 @@
+﻿@{
+    string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
+    string _classMiniCart = Session["idEventList"] == null && Session["EventList"] == null ? "mini-cart" : "mini-cart-list-event";
+}
+
+<div class="hideme" id="toTop"></div>
+
+<div class="ui container fluid _header">
+    <div class="_row display flex align-items center justify content between">
+        <div class="_column">
+            <div class="ui mobile only menuheadermobile">
+                <svg class="display block" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="10" y="11.5" width="14" height="1" rx="0.5" fill="#1C1B1F"/>
+                    <rect x="10" y="15.5" width="14" height="1" rx="0.5" fill="#1C1B1F"/>
+                    <rect x="10" y="19.5" width="9" height="1" rx="0.5" fill="#1C1B1F"/>
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#1A1A1A"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="_column _logo">
+            <a href="/home" title="Página Inicial">
+                <img class="ui middle aligned image logo" src="/assets/image/logo/logo.svg" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName" width="@(Request.Browser.IsMobileDevice ? "108px" : "222px")" height="@(Request.Browser.IsMobileDevice ? "52px" : "100px")">
+            </a>
+        </div>
+        
+        <div class="_column _menu_apoio">
+            <ul class="display flex align-items center justify content end">
+                <li>
+                    <div class="ui searchMobile">
+                        <svg class="display block" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M22.8917 23.488L16.6659 17.2622C15.8325 17.9567 14.8742 18.4983 13.7909 18.8872C12.7075 19.2761 11.6242 19.4705 10.5409 19.4705C7.84641 19.4705 5.57585 18.5467 3.72919 16.6989C1.88141 14.8522 0.95752 12.5955 0.95752 9.92887C0.95752 7.26221 1.88141 5.00498 3.72919 3.15721C5.57585 1.31054 7.83252 0.387207 10.4992 0.387207C13.1659 0.387207 15.4297 1.31054 17.2909 3.15721C19.152 5.00498 20.0825 7.26221 20.0825 9.92887C20.0825 11.0955 19.8742 12.2205 19.4575 13.3039C19.0408 14.3872 18.4992 15.3039 17.8325 16.0539L24.1 22.3214L22.8917 23.488ZM10.5409 17.8039C12.7353 17.8039 14.5964 17.0472 16.1242 15.5339C17.652 14.0194 18.4159 12.1511 18.4159 9.92887C18.4159 7.70665 17.652 5.83832 16.1242 4.32387C14.5964 2.81054 12.7353 2.05387 10.5409 2.05387C8.31863 2.05387 6.44363 2.81054 4.91585 4.32387C3.38808 5.83832 2.62419 7.70665 2.62419 9.92887C2.62419 12.1511 3.38808 14.0194 4.91585 15.5339C6.44363 17.0472 8.31863 17.8039 10.5409 17.8039Z" fill="#1C1B1F"/></svg>
+                        
+                        <div class="ui blocoBusca @_classSearch">
+                            <div class="ui input fluid blocoBuscaContainer">
+                                <input class="prompt" type="text" placeholder="Buscar...">
+                                <i class="search icon search-results"></i>
+                                <i class="close icon disabled" id="closeResultsMobile"></i>
+                            </div>
+                            <div class="results"></div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="ui mobile hide">
+                    <a href="/customer" title="Minha Conta">Minha Conta</a>
+                </li>
+                
+                @{
+                    bool isb2b = Session["segment"] != null && Session["segment"].ToString() == "b2b" ? true : false;
+                    DomainAssistedSale.Entities.Seller _assistedSale = (DomainAssistedSale.Entities.Seller)Session["Seller"];
+                    bool isAssistedSale = _assistedSale != null ? true : false;
+
+                    if (!isb2b && !isAssistedSale)
+                    {
+                        <li class="ui mobile hide">
+                                <a href="/customer/wishList">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="26" viewBox="0 0 29 26" fill="none"><path d="M7.86983 0.447494C5.99441 0.447494 4.12902 1.18861 2.7073 2.67632C-0.136126 5.65173 -0.144111 10.4273 2.69596 13.405L14.072 25.3348C14.3474 25.6258 14.8707 25.6258 15.146 25.3348C18.9406 21.3635 22.7267 17.3877 26.5221 13.4162C29.3652 10.4405 29.3652 5.66256 26.5221 2.68754C23.6789 -0.288144 19.0291 -0.288144 16.186 2.68754L14.6153 4.31601L13.0446 2.67592C11.5117 1.06553 9.61262 0.439047 7.8705 0.447098L7.86983 0.447494ZM7.86983 1.90273C9.34777 1.90273 10.8334 2.50313 11.9813 3.70444L14.0834 5.91036C14.3587 6.20141 14.8821 6.20141 15.1573 5.91036L17.2477 3.71606C19.5436 1.31347 23.1633 1.31347 25.4594 3.71606C27.755 6.11864 27.755 9.99838 25.4594 12.4009C21.8452 16.1834 18.2291 19.9711 14.6152 23.7532L3.77106 12.389C1.47697 9.98359 1.47545 6.1067 3.77106 3.70418C4.91903 2.50288 6.39301 1.90247 7.87095 1.90247L7.86983 1.90273Z" fill="black"/></svg>
+                                </a>
+                        </li>
+                    }
+                }
+
+                <li>
+                    <div id="cartButton" class="display flex align-items center cartbutton @_classMiniCart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="30" viewBox="0 0 27 30" fill="none"><path d="M24.2791 30H3.02913C2.25136 30 1.6058 29.7433 1.09247 29.23C0.578023 28.7156 0.320801 28.0694 0.320801 27.2917V9.375C0.320801 8.59722 0.578023 7.95167 1.09247 7.43833C1.6058 6.92389 2.25136 6.66667 3.02913 6.66667H6.98747C6.98747 4.80556 7.63358 3.22889 8.9258 1.93667C10.2169 0.645556 11.793 0 13.6541 0C15.5152 0 17.0919 0.645556 18.3841 1.93667C19.6752 3.22889 20.3208 4.80556 20.3208 6.66667H24.2791C25.0569 6.66667 25.703 6.92389 26.2175 7.43833C26.7308 7.95167 26.9875 8.59722 26.9875 9.375V27.2917C26.9875 28.0694 26.7308 28.7156 26.2175 29.23C25.703 29.7433 25.0569 30 24.2791 30ZM8.65413 6.66667H18.6541C18.6541 5.27778 18.168 4.09722 17.1958 3.125C16.2236 2.15278 15.043 1.66667 13.6541 1.66667C12.2652 1.66667 11.0847 2.15278 10.1125 3.125C9.14025 4.09722 8.65413 5.27778 8.65413 6.66667ZM24.2791 28.3333C24.5569 28.3333 24.7997 28.2289 25.0075 28.02C25.2164 27.8122 25.3208 27.5694 25.3208 27.2917V9.375C25.3208 9.09722 25.2164 8.85444 25.0075 8.64667C24.7997 8.43778 24.5569 8.33333 24.2791 8.33333H3.02913C2.75136 8.33333 2.50858 8.43778 2.3008 8.64667C2.09191 8.85444 1.98747 9.09722 1.98747 9.375V27.2917C1.98747 27.5694 2.09191 27.8122 2.3008 28.02C2.50858 28.2289 2.75136 28.3333 3.02913 28.3333H24.2791ZM13.6541 16.6667C15.5152 16.6667 17.0919 16.0206 18.3841 14.7283C19.6752 13.4372 20.3208 11.8611 20.3208 10H18.6541C18.6541 11.3889 18.168 12.5694 17.1958 13.5417C16.2236 14.5139 15.043 15 13.6541 15C12.2652 15 11.0847 14.5139 10.1125 13.5417C9.14025 12.5694 8.65413 11.3889 8.65413 10H6.98747C6.98747 11.8611 7.63358 13.4372 8.9258 14.7283C10.2169 16.0206 11.793 16.6667 13.6541 16.6667Z" fill="#1C1B1F"/></svg>
+                        <a class="margin left small ui mobile hide" id="total_itens_card" title="@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

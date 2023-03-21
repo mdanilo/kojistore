@@ -1,0 +1,268 @@
+﻿@using System.Text.RegularExpressions
+@{
+    List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
+}
+
+@Html.Action("getPrivacyPolicyAlertText", "company")
+
+<footer>
+    @if (redesSociais.Find(f => f.Identifier.ToUpper() == "WHATSAPP") != null)
+    {
+        string content = Regex.Replace(redesSociais.Find(f => f.Identifier.ToUpper() == "WHATSAPP").Content, "[^0-9]", "");
+        string urlWhasapp = string.Format("{0}{1}", "https://api.whatsapp.com/send?phone=55", content);
+
+        <a href="@urlWhasapp" target="_blank" class="_zap-floated" title="Whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none">
+                <rect width="72" height="72" rx="36" fill="#C8F4CF"/>
+                <path d="M18.5552 52.5778L21.1837 45.042L21.3412 44.5904L21.0886 44.1844C19.5391 41.6936 18.6495 38.7919 18.6495 35.6897C18.6495 26.5145 26.4457 19 36.1591 19C45.8725 19 53.6688 26.5145 53.6688 35.6897C53.6688 44.8648 45.8725 52.3793 36.1591 52.3793C33.2081 52.3793 30.4327 51.6805 27.9968 50.4546L27.6644 50.2872L27.3034 50.378L18.5552 52.5778Z" fill="#2CB742" stroke="white" stroke-width="2"/>
+                <path d="M47.0947 42.0612L47.0949 42.0617C47.234 42.3126 47.1936 42.6248 46.9654 42.8434L45.8245 43.9338C44.2465 45.4419 42.6561 45.776 41.0647 45.4243C39.396 45.0554 37.6281 43.9065 35.8732 42.2294L32.5629 39.0657L29.2526 35.9021C27.493 34.2204 26.3044 32.5405 25.9254 30.9743C25.5704 29.5074 25.8938 28.0225 27.4692 26.5169L28.6109 25.4257C28.849 25.1982 29.2337 25.1365 29.5489 25.2959L29.549 25.296C30.1352 25.5925 30.8814 26.3798 31.5471 27.2375C31.8615 27.6426 32.1294 28.0253 32.3188 28.3071C32.4132 28.4476 32.4874 28.5619 32.5374 28.6401C32.5624 28.6792 32.5813 28.7092 32.5936 28.7289L32.607 28.7504L32.6071 28.7506C32.7357 28.9683 32.7599 29.1339 32.7539 29.2051C32.7533 29.2126 32.7524 29.218 32.7517 29.2217C32.7459 29.2265 32.735 29.2343 32.7167 29.2441L32.6371 29.2868L32.5665 29.3431L33.1898 30.1251L32.5664 29.3432L32.5664 29.3432L32.5661 29.3434L32.5653 29.3441L32.5623 29.3465L32.5513 29.3553L32.5104 29.388C32.4754 29.4162 32.4254 29.4564 32.3651 29.5054C32.2446 29.6032 32.0812 29.7368 31.9113 29.8792C31.7427 30.0205 31.5615 30.1755 31.4077 30.3148C31.2874 30.4238 31.0889 30.6059 30.9695 30.7741L30.9691 30.7746C30.483 31.4604 30.165 32.2405 30.238 33.0927C30.3114 33.949 30.7631 34.6904 31.4318 35.3294L34.0173 37.8004L36.6028 40.2714C37.2752 40.914 38.0347 41.3275 38.889 41.3943C39.7375 41.4607 40.5275 41.173 41.2416 40.7106L41.2421 40.7103C41.4143 40.5987 41.6036 40.4106 41.7189 40.2943C41.8647 40.1472 42.0271 39.9739 42.175 39.8127C42.3241 39.6502 42.464 39.494 42.5663 39.3788C42.6176 39.3211 42.6598 39.2733 42.6892 39.2398L42.7235 39.2007L42.7328 39.1902L42.7353 39.1873L42.736 39.1865L42.7362 39.1863L42.7362 39.1862L41.9828 38.5286L42.7363 39.1861L42.7978 39.1156L42.8452 39.0348C42.8556 39.0172 42.863 39.0093 42.8653 39.0069C42.8675 39.0047 42.8683 39.0042 42.8688 39.004L42.8689 39.0039C42.8696 39.0035 42.8736 39.0012 42.8831 38.9984C42.893 38.9955 42.9096 38.9918 42.9342 38.9899C43.0454 38.9814 43.2437 39.016 43.4791 39.1431L43.4799 39.1435L43.5026 39.1565C43.5233 39.1683 43.5549 39.1865 43.596 39.2104C43.6782 39.2584 43.7982 39.3296 43.9456 39.4201C44.2413 39.6016 44.6427 39.8582 45.0675 40.1594C45.4943 40.4619 45.9319 40.8003 46.3058 41.1444C46.69 41.4981 46.9571 41.8126 47.0947 42.0612ZM32.7574 29.2163C32.7574 29.2163 32.757 29.2169 32.7559 29.218C32.7568 29.2168 32.7573 29.2163 32.7574 29.2163Z" fill="white" stroke="white" stroke-width="2"/>
+            </svg>
+        </a>
+    }
+
+    <div class="ui container fluid">
+        <section class="topbar_footer">
+            <div class="display flex align-items center justify content center direction-m column">
+                <p class="_text1">Desconto exclusivo para você!</p>
+                <p class="_text2"><strong>10% OFF</strong> com o cupom</p>
+                <a href="#" title="KOJI10OFF" id="copyCupom">KOJI10OFF</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="ui container">
+        <div class="_row-0">
+            <i class="display block text center margin bottom top medium">
+                <img src="/assets/image/footer/flores.png" alt="Flores" />
+            </i>
+
+            <div class="ui mobile only margin bottom large">
+                <socialbar class="display flex align-items center justify content center">
+                    @if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "facebook").Content" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none"><rect x="1" y="1" width="37" height="37" rx="18.5" stroke="#1A1A1A" stroke-width="2"/><g clip-path="url(#clip0_2_492)"><path d="M17.4828 17.4828H15.4656V20.1725H17.4828V28.2414H20.8449V20.1725H23.2938L23.5345 17.4828H20.8449V16.3619C20.8449 15.7198 20.974 15.4656 21.5946 15.4656H23.5345V12.1035H20.974C18.556 12.1035 17.4828 13.1679 17.4828 15.2067V17.4828Z" fill="#1A1A1A"/></g><defs><clipPath id="clip0_2_492"><rect width="16.1379" height="16.1379" fill="white" transform="translate(11.4312 12.1035)"/></clipPath></defs></svg>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "instagram") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "instagram").Content" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none"><path d="M15.9139 11.4307C13.4421 11.4307 11.4312 13.4416 11.4312 15.9134V23.0858C11.4312 25.5576 13.4421 27.5686 15.9139 27.5686H23.0863C25.5581 27.5686 27.5691 25.5576 27.5691 23.0858V15.9134C27.5691 13.4416 25.5581 11.4307 23.0863 11.4307H15.9139ZM15.9139 13.2238H23.0863C24.5692 13.2238 25.776 14.4305 25.776 15.9134V23.0858C25.776 24.5687 24.5692 25.7755 23.0863 25.7755H15.9139C14.431 25.7755 13.2243 24.5687 13.2243 23.0858V15.9134C13.2243 14.4305 14.431 13.2238 15.9139 13.2238ZM23.9829 14.1203C23.7451 14.1203 23.5171 14.2148 23.3489 14.3829C23.1808 14.551 23.0863 14.7791 23.0863 15.0169C23.0863 15.2547 23.1808 15.4827 23.3489 15.6508C23.5171 15.819 23.7451 15.9134 23.9829 15.9134C24.2207 15.9134 24.4487 15.819 24.6168 15.6508C24.785 15.4827 24.8794 15.2547 24.8794 15.0169C24.8794 14.7791 24.785 14.551 24.6168 14.3829C24.4487 14.2148 24.2207 14.1203 23.9829 14.1203ZM19.5001 15.0169C17.0283 15.0169 15.0174 17.0278 15.0174 19.4996C15.0174 21.9714 17.0283 23.9824 19.5001 23.9824C21.9719 23.9824 23.9829 21.9714 23.9829 19.4996C23.9829 17.0278 21.9719 15.0169 19.5001 15.0169ZM19.5001 16.81C20.983 16.81 22.1898 18.0167 22.1898 19.4996C22.1898 20.9825 20.983 22.1893 19.5001 22.1893C18.0172 22.1893 16.8105 20.9825 16.8105 19.4996C16.8105 18.0167 18.0172 16.81 19.5001 16.81Z" fill="#1A1A1A"></path><rect x="1" y="1" width="37" height="37" rx="18.5" stroke="#1A1A1A" stroke-width="2"></rect></svg>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "twitter") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "twitter").Content" target="_blank">
+                            <i class="twitter icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "youtube") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "youtube").Content" target="_blank">
+                            <i class="youtube icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "google plus") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "google plus").Content" target="_blank">
+                            <i class="google plus icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier.ToUpper() == "BLOGER") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "bloger").Content" target="_blank" title="Blogger">
+                            <i class="wpforms icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "pinterest") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "pinterest").Content" target="_blank" title="Printerest">
+                            <i class="pinterest icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "vimeo") != null)
+                    {
+                        <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "vimeo").Content" target="_blank" title="Vimeo">
+                            <i class="vimeo icon"></i>
+                        </a>
+                    }
+                </socialbar>
+            </div>
+
+            <div class="ui mobile hide">
+                @Html.Partial("~/Views/Shared/Common/_Payments_List.cshtml")
+            </div>
+        </div>
+
+        <div class="_row-1 display flex justify content between direction-m column">
+            <div class="_column">
+                <div class="form">
+                    <p class="title"><strong>Newsletter</strong></p>
+                    <p>Receba nossas dicas, novidades e promoções</p>
+    
+                    <div>
+                        <input type="text" placeholder="E-mail" id="email_news">
+                    </div>
+    
+                    <div class="text align right">
+                        <button id="btn_news">
+                            Cadastrar
+                        </button>
+                    </div>
+    
+                    @Html.Action("getRecaptchaV3", "company", new { Module = "Newsletter" })
+                </div>
+            </div>
+    
+            @Html.Action("customPages", "home")
+        </div>
+    
+        <div class="_row-2 display flex align-items center justify content center text center">
+            <div class="_column">
+                <p class="_sac">
+                    <strong>SAC</strong>
+                    <br/>
+                    Serviço de Atendimento ao Cliente
+                    <br/>
+                    <strong>@LojaCorp.Control.Company._Company.Phone1</strong>
+                </p>
+    
+                @if (redesSociais.Find(f => f.Identifier.ToUpper() == "WHATSAPP") != null)
+                {
+                    string content = Regex.Replace(redesSociais.Find(f => f.Identifier.ToUpper() == "WHATSAPP").Content, "[^0-9]", "");
+                    string urlWhasapp = string.Format("{0}{1}", "https://api.whatsapp.com/send?phone=55", content);
+    
+                    <a href="@urlWhasapp" target="_blank" class="_zap" title="Whatsapp">Chamar no Whatsapp</a>
+                }
+    
+                <div class="_hour">
+                    <p>
+                        <strong>Atendimento Online: </strong>
+                        <br/>
+                        Segunda à Sexta das 08:00 às 22:00.
+                        <br/>
+                        Sábado das 08:00 às 16:00 
+                        <br/>
+                        Domingo das 08:00 às 16:00 
+                    </p>
+        
+                    <p>
+                        <strong>Atendimento Loja Física: </strong>
+                        <br/>
+                        Segunda à Sexta das 08:00 às 22:00.
+                        <br/>
+                        Sábado das 08:00 às 16:00 
+                        <br/>
+                        Domingo das 08:00 às 16:00 
+                    </p>
+
+                    <p>
+                        <strong>Contato:</strong> @LojaCorp.Control.Company._Company.Phone1
+                        <br/>
+                        <strong>E-mail:</strong> sac@kojistore.com.br
+                    </p>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui container fluid">
+        <div class="_row-3 display flex align-items center justify content between direction-m column">
+            <div class="_column ui mobile only margin top bottom medium">
+                <p class="text center">Pagamento</p>
+                @Html.Partial("~/Views/Shared/Common/_Payments_List.cshtml")
+            </div>
+
+            <div class="_column ui mobile hide">
+                <div class="display flex align-items center">
+                    <span class="margin right small">REDES SOCIAIS</span>
+    
+                    <socialbar class="display flex align-items center">
+                        @if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "facebook").Content" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none"><rect x="1" y="1" width="37" height="37" rx="18.5" stroke="#1A1A1A" stroke-width="2"/><g clip-path="url(#clip0_2_492)"><path d="M17.4828 17.4828H15.4656V20.1725H17.4828V28.2414H20.8449V20.1725H23.2938L23.5345 17.4828H20.8449V16.3619C20.8449 15.7198 20.974 15.4656 21.5946 15.4656H23.5345V12.1035H20.974C18.556 12.1035 17.4828 13.1679 17.4828 15.2067V17.4828Z" fill="#1A1A1A"/></g><defs><clipPath id="clip0_2_492"><rect width="16.1379" height="16.1379" fill="white" transform="translate(11.4312 12.1035)"/></clipPath></defs></svg>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "instagram") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "instagram").Content" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none"><path d="M15.9139 11.4307C13.4421 11.4307 11.4312 13.4416 11.4312 15.9134V23.0858C11.4312 25.5576 13.4421 27.5686 15.9139 27.5686H23.0863C25.5581 27.5686 27.5691 25.5576 27.5691 23.0858V15.9134C27.5691 13.4416 25.5581 11.4307 23.0863 11.4307H15.9139ZM15.9139 13.2238H23.0863C24.5692 13.2238 25.776 14.4305 25.776 15.9134V23.0858C25.776 24.5687 24.5692 25.7755 23.0863 25.7755H15.9139C14.431 25.7755 13.2243 24.5687 13.2243 23.0858V15.9134C13.2243 14.4305 14.431 13.2238 15.9139 13.2238ZM23.9829 14.1203C23.7451 14.1203 23.5171 14.2148 23.3489 14.3829C23.1808 14.551 23.0863 14.7791 23.0863 15.0169C23.0863 15.2547 23.1808 15.4827 23.3489 15.6508C23.5171 15.819 23.7451 15.9134 23.9829 15.9134C24.2207 15.9134 24.4487 15.819 24.6168 15.6508C24.785 15.4827 24.8794 15.2547 24.8794 15.0169C24.8794 14.7791 24.785 14.551 24.6168 14.3829C24.4487 14.2148 24.2207 14.1203 23.9829 14.1203ZM19.5001 15.0169C17.0283 15.0169 15.0174 17.0278 15.0174 19.4996C15.0174 21.9714 17.0283 23.9824 19.5001 23.9824C21.9719 23.9824 23.9829 21.9714 23.9829 19.4996C23.9829 17.0278 21.9719 15.0169 19.5001 15.0169ZM19.5001 16.81C20.983 16.81 22.1898 18.0167 22.1898 19.4996C22.1898 20.9825 20.983 22.1893 19.5001 22.1893C18.0172 22.1893 16.8105 20.9825 16.8105 19.4996C16.8105 18.0167 18.0172 16.81 19.5001 16.81Z" fill="#1A1A1A"></path><rect x="1" y="1" width="37" height="37" rx="18.5" stroke="#1A1A1A" stroke-width="2"></rect></svg>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "twitter") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "twitter").Content" target="_blank">
+                                <i class="twitter icon"></i>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "youtube") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "youtube").Content" target="_blank">
+                                <i class="youtube icon"></i>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "google plus") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "google plus").Content" target="_blank">
+                                <i class="google plus icon"></i>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier.ToUpper() == "BLOGER") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "bloger").Content" target="_blank" title="Blogger">
+                                <i class="wpforms icon"></i>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "pinterest") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "pinterest").Content" target="_blank" title="Printerest">
+                                <i class="pinterest icon"></i>
+                            </a>
+                        }
+                        @if (redesSociais.Find(f => f.Identifier == "vimeo") != null)
+                        {
+                            <a class="margin right small" href="@redesSociais.Find(f => f.Identifier == "vimeo").Content" target="_blank" title="Vimeo">
+                                <i class="vimeo icon"></i>
+                            </a>
+                        }
+                    </socialbar>
+                </div>
+            </div>
+    
+            <div class="_column ui mobile hide">
+                <a href="#" class="backToTop display flex align-items center">
+                    <svg class="small right margin" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none"><circle cx="17.5" cy="17.5" r="17.5" transform="rotate(90 17.5 17.5)" fill="#ECBBC1"/><g clip-path="url(#clip0_316_6528)"><path d="M16.9927 13.8888L11.2077 19.674C11.0738 19.8078 11 19.9864 11 20.1769C11 20.3673 11.0738 20.5459 11.2077 20.6797L11.6336 21.1058C11.9112 21.383 12.3622 21.383 12.6394 21.1058L17.4973 16.2478L22.3606 21.1112C22.4945 21.245 22.6731 21.3188 22.8634 21.3188C23.054 21.3188 23.2325 21.245 23.3665 21.1112L23.7923 20.6851C23.9262 20.5512 24 20.3727 24 20.1823C24 19.9918 23.9262 19.8132 23.7923 19.6794L18.002 13.8888C17.8676 13.7547 17.6883 13.681 17.4976 13.6815C17.3062 13.681 17.127 13.7547 16.9927 13.8888Z" fill="#42171C"/></g><defs><clipPath id="clip0_316_6528"><rect width="13" height="13" fill="white" transform="translate(11 24) rotate(-90)"/></clipPath></defs></svg>
+                    <u>Voltar ao Topo</u>
+                </a>
+            </div>
+            
+            <div class="_column _copyright ui mobile hide">
+                <p>© Todos os direitos reservados à @LojaCorp.Control.Company._Company.FantasyName Comercio do Vestuario EIRELI - CNPJ: @LojaCorp.Control.Company._Company.CNPJ sac@kojistore.com.br</p>
+            </div>
+    
+            <div class="_column">
+                <div class="display flex align-items center direction-m column">
+                    <span class="title margin right small">Segurança</span>
+    
+                    <div class="display flex align-items center direction-m column">
+                        @Html.Action("eBit", "company")
+                        @Html.Action("getCompanySeal", "company")
+                    </div>
+                </div>
+            </div>
+
+            <div class="_column _copyright text center ui mobile only">
+                <a href="#" class="backToTop display flex align-items center justify content center margin top bottom medium">
+                    <svg class="small right margin" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none"><circle cx="17.5" cy="17.5" r="17.5" transform="rotate(90 17.5 17.5)" fill="#ECBBC1"/><g clip-path="url(#clip0_316_6528)"><path d="M16.9927 13.8888L11.2077 19.674C11.0738 19.8078 11 19.9864 11 20.1769C11 20.3673 11.0738 20.5459 11.2077 20.6797L11.6336 21.1058C11.9112 21.383 12.3622 21.383 12.6394 21.1058L17.4973 16.2478L22.3606 21.1112C22.4945 21.245 22.6731 21.3188 22.8634 21.3188C23.054 21.3188 23.2325 21.245 23.3665 21.1112L23.7923 20.6851C23.9262 20.5512 24 20.3727 24 20.1823C24 19.9918 23.9262 19.8132 23.7923 19.6794L18.002 13.8888C17.8676 13.7547 17.6883 13.681 17.4976 13.6815C17.3062 13.681 17.127 13.7547 16.9927 13.8888Z" fill="#42171C"/></g><defs><clipPath id="clip0_316_6528"><rect width="13" height="13" fill="white" transform="translate(11 24) rotate(-90)"/></clipPath></defs></svg>
+                    <u>Voltar ao Topo</u>
+                </a>
+
+                <p>© Todos os direitos reservados à @LojaCorp.Control.Company._Company.FantasyName Comercio do Vestuario EIRELI - CNPJ: @LojaCorp.Control.Company._Company.CNPJ sac@kojistore.com.br</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-block"></div>
+</footer>

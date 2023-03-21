@@ -1,0 +1,119 @@
+$menuBG: $primary-color;
+$menuTextColor: $white;
+$menuHeight: 50px;
+$menuHoverBorderColor: $secondary-color;
+$colorLinkSubMenu: "#666";
+
+/*EVITA QUEBRA MOBILE*/
+@media (max-width: 960px) {
+  .pusher {
+    > .menuheader {
+      display: none;
+    }
+  }
+}
+
+.menuheader {
+  @media (min-width:960px) {
+    width: 100%;
+    margin-top: 1rem;
+    min-height: $menuHeight;
+  }
+  /*Sub Classes*/
+  .ui.menu {
+    background: transparent;
+    background-color: transparent;
+    border: 0px;
+    box-shadow: none;
+    display: flex;
+    font-weight: 400;
+    min-height: 2.85714286em;
+    flex-wrap: wrap;
+    margin: 0;
+    li {
+      > .item {
+        word-wrap: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 16px;
+        line-height: $menuHeight;
+
+        &[title="Atendimento"],
+        &[title="Meus Favoritos"] {
+          background-position: 95%;
+          border-top: 1px solid black;
+          background-repeat: no-repeat;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='21' viewBox='0 0 21 21' fill='none'%3E%3Cmask id='mask0_31_846' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='2' y='2' width='17' height='17'%3E%3Crect x='2' y='2' width='17' height='17' fill='%23D9D9D9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_31_846)'%3E%3Cpath d='M10.5005 15.6177L9.98698 15.1219L14.2547 10.8542H5.38281V10.1459H14.2547L9.98698 5.87816L10.5005 5.38232L15.6182 10.5L10.5005 15.6177Z' fill='%231C1B1F'/%3E%3C/g%3E%3Crect x='0.5' y='0.5' width='20' height='20' rx='10' stroke='black'/%3E%3C/svg%3E");
+        }
+
+        > .icon.dropdown {
+          line-height: 18px;
+        }
+        > .icon.content {
+          font-size: 26px;
+          line-height: 1;
+          margin-right: 15px;
+        }
+        .menu {
+          border-radius: 0px !important;
+          margin-top: 0px !important;
+          z-index: 10;
+          .item {
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    .header {
+      a {
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+  }
+  .ui.menu .item {
+    background-color: transparent!important;
+    line-height: $menuHeight;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    &:before,
+    &:after {
+      display: none!important;
+    }
+    &[title="Novidades"],
+    &[title="Todos os vestidos"] {
+      font-weight: bold;
+    }
+  }
+  .sub-megamenu {
+    .ui.link.list {
+      .item {
+        color: rgba(0, 0, 0, 0.7);
+        margin: 0.5em 0px;
+        padding-left: 10px;
+      }
+    }
+  }
+  .ui.list {
+    h4 {
+      font-weight: normal;
+    }
+    .item {
+      color: rgba(0, 0, 0, 0.7);
+      padding-left: 10px !important;
+      &:hover,
+      &.active,
+      &:focus {
+        color: rgba(0, 0, 0, 0.9);
+        box-shadow: inset 5px 0 0 $menuHoverBorderColor;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+  }
+}
+/* Mega Menu Start */
+@import "wsmenu/style";
+/* MegaMenu End */

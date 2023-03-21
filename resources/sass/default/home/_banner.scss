@@ -1,0 +1,108 @@
+.car-banners {
+  .container {
+    position: relative;
+    .description {
+      width: 30%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+
+      .html {
+        flex-direction: column;
+        vertical-align: middle;
+        align-self: center !important;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.ui.images {
+  img.side-halfbanner-image {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.centralHalf {
+  padding-top: 7rem;
+  position: relative;
+
+  @media (min-width: 960px) {
+    &:after {
+      top: 0;
+      content: '';
+      width: 100%;
+      height: 10%;
+      z-index: -1;
+      display: block;
+      position: absolute;
+      background-color: #F9EAEC;
+    }
+  }
+}
+
+.centralHalf,
+.footerHalf {
+  
+  .column {
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .description {
+      p {
+        font-size: 24px;
+        font-weight: 500;
+        color: #d56f7c;
+        font-style: normal;
+        text-align: center;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: underline;
+
+        @media (max-width: 960px)  {
+          font-size: 14px;
+        }
+      }
+    }
+    
+    @media (max-width: 960px) {
+      margin-top: 1rem;
+
+      &.column-3 {
+        display: none;
+      }
+    }
+
+    @media (min-width: 960px) {
+      &.column-1,
+      &.column-2 {
+        width: 50%;
+      }
+  
+      &.column-1 {
+        text-align: right;
+        padding-left: 3rem;
+        padding-right: 1rem;
+      }
+  
+      &.column-2 {
+        text-align: left;
+        padding-left: 1rem;
+        padding-right: 3rem;
+      }
+  
+      &.column-3 {
+        width: 100%;
+        margin-top: 5rem;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+﻿@model List<DomainProduct.Entities.Product>
+@if (Model != null && Model.Any())
+{
+<div class="ui container fluid">
+    <p class="cards-title">
+        Produtos Relacionados
+    </p>
+                
+    <div class="@(Request.Browser.IsMobileDevice ? "cardsMobile display flex align-items center wrap-no" : "ui cards centered car-relacionados slideshow")">
+        @foreach (var product in Model)
+        {
+            @Html.Partial("~/Views/Shared/Object/Product/_ProductInCard.cshtml", product)
+        }
+    </div>
+    <div class="ui divider hidden"></div>
+</div>
+}

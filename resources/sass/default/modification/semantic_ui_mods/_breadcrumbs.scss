@@ -1,0 +1,26 @@
+/* Breadbrumbs */
+.breadcrumbs {
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+    }
+}
+
+.ui.breadcrumb {
+    padding: 0;
+    margin: 10px !important;
+    
+    a {
+        color: $black;
+        font-size: 12px;
+        font-weight: 300;
+
+        &.cursor-default {
+            cursor: default;
+        }
+    }
+
+    li {
+        display: inline-block;
+    }
+}

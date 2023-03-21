@@ -1,0 +1,218 @@
+﻿@{   
+
+    ViewBag.Title = string.IsNullOrEmpty(LojaCorp.Control.Company._Company.Title) ? LojaCorp.Control.Company._Company.NameStore : LojaCorp.Control.Company._Company.Title;
+    Layout = "~/Views/Shared/Base/_Layout.cshtml";
+
+    string PathLogo = "/assets/image/logo/logo.png";
+
+    Uri Url = System.Web.HttpContext.Current.Request.Url;
+
+    string UrlLogo = Url.Scheme + "://" + Url.Host + PathLogo;
+    string CurrentURL = Request.Url.AbsoluteUri;
+
+}
+@section CustomSeo{
+    @{
+
+        <meta property="og:title" content="@ViewBag.Title" />
+        <meta property="og:image" content="@UrlLogo" />
+    }
+}
+<!-- ~/Views/Shared/Blocks/Banner/_FullBanner.cshtml -->
+<div class="full_banner-home">
+    @Html.Action("fullBanner", "banner")
+</div>
+
+<!-- ~/Views/Shared/Blocks/_InfoBar.cshtml -->
+@Html.Partial("Blocks/_InfoBar")
+
+<div class="brands_top">
+    <!-- ~/Views/Shared/Blocks/Brand/_Brands.cshtml -->
+    @Html.Action("brand", "product")
+</div>
+<!-- ~/Views/Shared/Blocks/_CentralHalfBanner.cshtml -->
+@Html.Action("centralHalfBanner", "banner")
+
+<div class="featuredProducts">
+    <div class="ui container">
+        <div class="row">
+            <div class="column">
+                <h2>NOVA COLEÇÃO</h2>
+                <p>Você não pode perder essa nova coleção. Confira os preços especiais!</p>
+            </div>
+        </div>
+    </div>
+    <div class="maze_topsellers nova_colecao">
+        @{
+            var vitrineUm = 7447;
+           if(CurrentURL.Contains("sbx1")){
+               vitrineUm = 16530;
+           }
+       }
+       @Html.Action("ProductsByGroup", "Product", new { id = vitrineUm})
+    </div>
+</div>
+
+@Html.Action("SideHalfBanner", "Banner")
+
+<!-- mudar para group -->
+<div class="featuredProducts middle_shelf">
+    <div class="maze_topsellers">
+        <!-- ~/Views/Shared/Blocks/Product/_FeaturedProducts.cshtml -->
+        @{
+            var vitrineDois = 4647;
+           if(CurrentURL.Contains("sbx1")){
+            vitrineDois = 1385;
+           }
+       }
+       @Html.Action("ProductsByGroup", "Product", new { id = vitrineDois})
+
+    </div>
+</div>
+<!-- mudar para group -->
+<div class="featuredProducts middle_shelf">
+    <div class="maze_topsellers">
+        <!-- ~/Views/Shared/Blocks/Product/_FeaturedProducts.cshtml -->
+        @{
+            var vitrineTres = 4648;
+           if(CurrentURL.Contains("sbx1")){
+                vitrineTres = 16532;
+           }
+       }
+       @Html.Action("ProductsByGroup", "Product", new { id = vitrineTres})
+       
+    </div>
+</div>
+
+<div class="banner_half_2"></div>
+
+<div class="mosaico mosaico_1">
+    <div class="ui container">
+        <div class="row">
+        </div>
+    </div>
+</div>
+
+<div class="featuredProducts middle_shelf">
+    <div class="maze_topsellers mais_vendidos">
+        @{
+            var vitrineQuatro = 7446;
+           if(CurrentURL.Contains("sbx1")){
+                vitrineQuatro = 16531;
+           }
+       }
+       @Html.Action("ProductsByGroup", "Product", new { id = vitrineQuatro})
+    </div>
+</div>
+
+<div class="itens_banners aboveExplore"></div>
+
+<div class="categorias">
+    <div class="ui container">
+        <div class="row">
+            <div class="column">
+                <h2>explore nossas categorias</h2>
+                <div class="slider">
+                    <div class="item">
+                        <a href="/categoria/tenis/">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_tenis.jpg" alt="">
+                            <p>TÊNIS</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/categoria/roupas/camisetas">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_camisas.jpg" alt="">
+                            <p>CAMISETAS</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/categoria/roupas/jaquetas">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_jaqueta.jpg" alt="">
+                            <p>JAQUETAS</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/categoria/roupas/moletom">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_moleton.jpg" alt="">
+                            <p>MOLETONS</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/categoria/acessorios/bones">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_bones.jpg" alt="">
+                            <p>BONÉS</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/categoria/skate/">
+                            <img src="https://maze.plataformaneo.com.br/assets/image/categorias/cat_skate.jpg" alt="">
+                            <p>SKATEBOARD</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="canal">
+    <div class="ui container">
+        <div class="row">
+            <div class="column">
+                <div class="column_1">
+                    <h2>conheça nosso canal</h2>
+                    <p>
+                        Fique por dentro dos lançamentos e novidades da Maze, Maze Fest e Amazing'Am. Se inscreva no nosso canal do Youtube para o melhor do streetwear global e acesso a conteúdos incríveis e exclusivos sobre sneakers, cultura urbana e skate.
+                    </p>
+                    <a href="https://www.youtube.com/channel/UCnMvpkzDk1cRFPtYXRTvnEg" class="button_black" target="_blank">
+                        CONFIRA
+                    </a>
+                </div>
+                <div class="column_2">
+                    <!-- <img src="https://maze.plataformaneo.com.br/assets/image/video_home.png" alt=""> -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/f3jrKLWxT_w?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/channel/UCnMvpkzDk1cRFPtYXRTvnEg" class="button_black" target="_blank">
+                        CONFIRA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="itens_banners aboveInstafeed"></div>
+
+<div class="instafeed">
+    <div class="ui container">
+        <div class="row">
+            <div class="column">
+                <h2>Siga nosso instagram</h2>
+                <a href="https://www.instagram.com/mazesp/">&#x00040;mazesp</a>
+            </div>
+        </div>
+    </div>
+    <div id="instafeed"></div>
+</div>
+
+<!-- ~/Views/Shared/Blocks/Group/_Groups.cshtml -->
+@*@Html.Action("group", "group")*@
+
+<!-- ~/Views/Shared/Blocks/Banner/_FooterHalfBanner.cshtml -->
+@Html.Action("footerHalfBanner", "banner")
+
+<script>
+
+if (screen.width < 768) {
+  $('.ui.container>.ui.stackable.grid>.column').slick({
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+
+    });  
+}
+</script>

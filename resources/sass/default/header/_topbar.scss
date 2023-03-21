@@ -1,0 +1,56 @@
+.topbar {
+  padding: 10px 0;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: #e9c0c5;
+
+  > p {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+}
+
+.topbar_footer {
+  padding: 10px 0;
+  background-color: #e9c0c5;
+
+  @media (max-width: 960px) {
+    margin: 0 -1rem;
+  }
+
+  p {
+    margin-bottom: 0;
+
+    @media (min-width: 960px) {
+      margin-right: 1rem;
+    }
+
+    &._text1 {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000000;
+      font-style: normal;
+      letter-spacing: 0.18em;
+    }
+  
+    &._text2 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #000000;
+      font-style: normal;
+    }
+  }
+
+  #copyCupom {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 9px;
+    border: 1px solid #000000;
+
+    @media (max-width: 960px) {
+      margin-top: 10px;
+    }
+  }
+}

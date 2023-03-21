@@ -1,0 +1,30 @@
+﻿@model IList<DomainCompany.Entities.Banner>
+@if (Model != null && Model.Any())
+{
+    <div class="ui container fluid centralHalf">
+        <div class="display flex wrap justify content center direction-m column">
+            @{
+                int counter = 1;
+            }
+            @foreach (var banner in Model)
+            {
+                <div class="column column-@counter">
+                    <a href="@banner.Link" title="@banner.Name">
+                        <img src="/assets/image/loading.svg" data-src="@banner.NameFileImage" alt="@banner.Name" title="@banner.Name" />
+
+                        @if (System.Text.RegularExpressions.Regex.Replace(banner.Description.Trim(), "<.*?>|&nbsp;", String.Empty).Trim() != "")
+                        {
+                            <br />
+                            <div class="description">
+                                <div class="html">@Html.Raw(banner.Description)</div>
+                            </div>
+                            <br />
+                        }
+                    </a>
+                </div>
+                counter++;
+            }
+        
+        </div>
+    </div>
+}

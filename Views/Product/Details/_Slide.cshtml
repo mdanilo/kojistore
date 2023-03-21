@@ -1,0 +1,58 @@
+﻿@model List<DomainProduct.Entities.ProductImage>
+
+@{
+    DomainProduct.Entities.SealStatus tag = new DomainProduct.Entities.SealStatus();
+    List<DomainProduct.Entities.SealStatus> tags = new List<DomainProduct.Entities.SealStatus>();
+
+    tag = Session["SealStatusV"] != null ? (DomainProduct.Entities.SealStatus)Session["SealStatusV"] : null;
+    tags = Session["SealsStatusV"] != null ? (List<DomainProduct.Entities.SealStatus>)Session["SealsStatusV"] : null;
+
+}
+
+<div class="display flex justify content between">
+    <div class="column column_1">
+        @Html.Partial("~/Views/Product/Details/_Gallery.cshtml", Model)
+    </div>
+
+    <div class="column column_2 ui mobile hide">
+        <div class="ui image" style="display: unset">
+            @if (tags != null && tags.Count > 0)
+            {
+                <div class="ui top right attached label imagetag seals">
+                    @foreach (var _sealStatus in tags)
+                    {
+                        if (_sealStatus.Name != "Normal")
+                        {
+                            <img src="@_sealStatus.Image" class="ui image tiny" onerror="imgError(this)">
+                        }
+                    }
+                </div>
+            }
+
+
+            @if (Model != null && Model.Count() > 0)
+            {
+                var productImage = Model.FirstOrDefault();
+                bool hasVideo = !string.IsNullOrWhiteSpace(productImage?.Video?.URL);
+
+                <div class="produto easyzoom easyzoom--overlay easyzoom--with-thumbnails easyzoom--with-toggle">
+                    <a href="@(productImage.ImageHighResolution != null ? productImage.ImageHighResolution : "#" )">
+                        @* Tem de Setar aqui a imagem de tamanho maior ZOOM!*@
+                        <img id="imagem-padrao" class="img" src="/assets/image/img_default.png" alt="@productImage.ImageAlt" data-src="@productImage.ImageDefault" data-type-media="image" onerror="imgError(this)" width="100%" @(hasVideo ? "style=display:none !important" : "") />
+                    </a>
+                </div>
+
+                <iframe id="video-product" class="video" src="@(productImage?.Video?.URL)" data-src="@(productImage?.Video?.URL)" data-type-media="video" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="100%" allowfullscreen @(hasVideo ? "" : "style=display:none !important")></iframe>
+
+            }
+            <button class="ui button basic small toggleZoom mobile only" data-active="false">Habilitar Zoom</button>
+        </div>
+
+        <!-- COMPARTILHE -->
+        <ul id="share" class="display flex align-items center margin top small">
+            <li>Compartilhe</li>
+            <li><a href="" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><rect x="0.5" y="0.5" width="22" height="22" rx="11" stroke="#1A1A1A"/><g clip-path="url(#clip0_95_981)"><path d="M10.3103 10.3104H9.12061V11.8966H10.3103V16.6552H12.293V11.8966H13.7373L13.8792 10.3104H12.293V9.6493C12.293 9.27059 12.3692 9.1207 12.7352 9.1207H13.8792V7.13794H12.3692C10.9432 7.13794 10.3103 7.76568 10.3103 8.96803V10.3104Z" fill="black"/></g><defs><clipPath id="clip0_95_981"><rect width="9.51724" height="9.51724" fill="white" transform="translate(6.74121 7.13794)"/></clipPath></defs></svg></a></li>
+            <li><a href="" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><path d="M9.38538 6.74133C7.92765 6.74133 6.7417 7.92729 6.7417 9.38501V13.6149C6.7417 15.0726 7.92765 16.2586 9.38538 16.2586H13.6153C15.073 16.2586 16.2589 15.0726 16.2589 13.6149V9.38501C16.2589 7.92729 15.073 6.74133 13.6153 6.74133H9.38538ZM9.38538 7.7988H13.6153C14.4898 7.7988 15.2015 8.51048 15.2015 9.38501V13.6149C15.2015 14.4894 14.4898 15.2011 13.6153 15.2011H9.38538C8.51085 15.2011 7.79917 14.4894 7.79917 13.6149V9.38501C7.79917 8.51048 8.51085 7.7988 9.38538 7.7988ZM14.144 8.32754C14.0038 8.32754 13.8693 8.38325 13.7701 8.4824C13.671 8.58156 13.6153 8.71605 13.6153 8.85628C13.6153 8.99651 13.671 9.13099 13.7701 9.23015C13.8693 9.32931 14.0038 9.38501 14.144 9.38501C14.2842 9.38501 14.4187 9.32931 14.5179 9.23015C14.617 9.13099 14.6727 8.99651 14.6727 8.85628C14.6727 8.71605 14.617 8.58156 14.5179 8.4824C14.4187 8.38325 14.2842 8.32754 14.144 8.32754ZM11.5003 8.85628C10.0426 8.85628 8.85664 10.0422 8.85664 11.5C8.85664 12.9577 10.0426 14.1436 11.5003 14.1436C12.958 14.1436 14.144 12.9577 14.144 11.5C14.144 10.0422 12.958 8.85628 11.5003 8.85628ZM11.5003 9.91375C12.3748 9.91375 13.0865 10.6254 13.0865 11.5C13.0865 12.3745 12.3748 13.0862 11.5003 13.0862C10.6258 13.0862 9.91411 12.3745 9.91411 11.5C9.91411 10.6254 10.6258 9.91375 11.5003 9.91375Z" fill="black"/><rect x="0.5" y="0.5" width="22" height="22" rx="11" stroke="#1A1A1A"/></svg></a></li>
+        </ul>
+    </div>
+</div>

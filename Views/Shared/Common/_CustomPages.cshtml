@@ -1,0 +1,46 @@
+﻿@model List<DomainCompany.Entities.CustomPage>
+
+@{
+  int counter = 1;
+  int commonQuestionColumn = 2;
+  bool commonQuestionsLink = false;
+}
+
+@foreach (var itemTitle in Model)
+{
+  <div class="_column _dropdown">
+    <p class="title"><strong>@itemTitle.Name</strong></p>
+
+    <div class="_menu">
+      <ul>
+        @foreach (var itemPage in itemTitle.CustomPagesContent)
+        {
+          <li>
+            <a href="/institucional/@itemTitle.IdCustomPage/@itemPage.IdCustomPageContent" class="item" title="@itemPage.Name">@itemPage.Name</a>
+          </li>
+        }
+        @if (commonQuestionsLink == false && commonQuestionColumn == counter)
+        {
+          <li>
+            <a href="@Url.Action("commonQuestions", "company")" class="item" title="Dúvidas Frequentes">Dúvidas Frequentes</a>
+          </li>
+
+          commonQuestionsLink = true;
+        }
+      </ul>
+    </div>
+  </div>
+  counter++;
+}
+
+<div class="_column _dropdown">
+  <p class="title"><strong>SUA CONTA</strong></p>
+
+  <div class="_menu">
+    <ul>
+      <li><a href="/customer" title="Minha Conta">Minha Conta</a></li>
+      <li><a href="/customer/orders" title="Meus Pedidos">Meus Pedidos</a></li>
+      <li><a href="/customer/wishlist" title="Meus Favoritos">Meus Favoritos</a></li>
+    </ul>
+  </div>
+</div>

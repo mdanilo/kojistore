@@ -1,0 +1,191 @@
+footer {
+  ._zap-floated {
+    right: 1rem;
+    bottom: 1rem;
+    position: fixed;
+  }
+
+  ._row-1 {
+    .form {
+      @media (min-width: 960px) {
+        width: 400px;
+      }
+
+      @media (max-width: 960px) {
+        margin-bottom: 3rem;
+      }
+
+      .title {
+        margin-bottom: 5px;
+
+        &:after {
+          display: none !important;
+        }
+      }
+
+      #email_news {
+        width: 100%;
+        border: none;
+        height: 40px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid black;
+      }
+
+      #btn_news {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        border: 1px solid black;
+        background-color: transparent;
+      }
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1b1b1b;
+      letter-spacing: 0.185em;
+      text-transform: uppercase;
+
+      &:checked {
+        &:after {
+          content: '-';
+        }
+
+        & + ul {
+          display: block;
+        }
+      }
+
+      @media (max-width: 960px) {
+        &:after {
+          content: '+';
+          float: right;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          font-weight: 300;
+          border-radius: 50%;
+          border: 1px solid black;
+
+        }
+      }
+    }
+
+    ._column {
+      &._dropdown {
+        @media (max-width: 960px) {
+          &._active {
+            .title {
+              &:after {
+                content: '-';
+              }
+            }
+  
+            ._menu {
+              display: block !important;
+            }
+          }
+  
+          .title {
+            height: 50px;
+          }
+
+          ._menu {
+            display: none;
+          }
+        }
+      }
+
+      ._menu {
+        ul {
+          padding: 0;
+  
+          @media (max-width: 960px) {
+            margin-bottom: 2rem;
+          }
+  
+          li {
+            margin-top: 1rem;
+  
+            a {
+              font-weight: 300;
+              font-size: 14px;
+              color: #1b1b1b;
+              letter-spacing: 0.05em;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ._row-2 {
+    @media (min-width: 960px) {
+      margin: 2rem 0;
+    }
+    
+    ._zap {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 15px;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background-color: #ecbbc1;
+    }
+
+    ._hour {
+      font-size: 14px;
+      color: #888472;
+    }
+  }
+
+  ._row-3 {
+    padding: 1rem;
+
+    @media (min-width:960px) {
+      background-color: #f3e1e1;
+    }
+
+    @media (max-width:960px) {
+      .title {
+        font-size: 12px;
+        color: #555037;
+      }
+    }
+  }
+}
+
+.jetBrand {
+  height: 35px;
+  text-align: center;
+  padding: 0px !important;
+  background: black !important;
+
+  img {
+    height: 25px;
+    margin: 5px;
+  }
+}
+#seloEbit {
+  display: inline-block !important;
+  width: 84px;
+  @media screen and (max-width: $mobile-bp) {
+    float: none;
+    margin: 0;
+    width: auto;
+  }
+}
+#jetLogo {
+  height: 57px;
+
+  .st0 {
+    fill: rgba(255, 255, 255, 1);
+  }
+
+  .st1 {
+    fill: rgba(255, 0, 0, 1);
+  }
+}
